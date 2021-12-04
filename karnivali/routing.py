@@ -7,8 +7,8 @@ from django.urls import re_path
 application = ProtocolTypeRouter(
     {
         'websocket': AuthMiddlewareStack(URLRouter([
-            re_path(r'ws/game/<room_code>', GameRoom),
-            re_path(r'ws/game/rps/<room_code>', RPS)
+            re_path(r'ws/game/(?P<room_code>\w+)$', GameRoom),
+            re_path(r'ws/game/rps/(?P<room_code>\w+)$', RPS)
         ]))
     }
 )
